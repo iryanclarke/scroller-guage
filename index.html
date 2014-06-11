@@ -2,54 +2,32 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>Ember Gauge Component</title>
+<title>jQuary Gauge Component</title>
 <link rel="stylesheet" href="style.css"/>
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.3.4/css/semantic.min.css">
 </head>
 <body>
 <div class="container">  
-	<script type="text/x-handlebars" id="application">
-	  <div class="form">
-	    <div class="ui input">
-	      <label>value</label>
-	      {{input type="text" value=something1}}
-	    </div>
-	  
-	    <div class="ui input">
-	      <label>maxValue</label>
-	      {{input type="text" value=something2}}
-	    </div>
-	  </div>
-	  
-	  {{my-gauge value=something1 maxValue=something2}}
-	  
-	</script>
-	  
-	<script type="text/x-handlebars" id="components/my-gauge">
-	  <div class="frame">
-	    <div class="labels">
-	      <span class="min">0</span>
-	      <span class="max">{{maxValue}}</span>
-	    </div>
-	    <span class="pointer" {{bind-attr style="computedAngle"}}>
-	      <span class="pointer-cap"></span>
-	      <span class="value">{{value}}</span>
-	    </span>
-	  </div>
-	  
-	  {{#if isMaxValueExceeded}}
-	    <p class="value-exceeded">maxValue exceeded</p>
-	  {{/if}}
-	</script>
+
+	<div class="jQuery">
+		<div class="frame">
+		    <div class="labels">
+		      <span class="min">0</span>
+		      <span class="max">1000</span>
+		    </div>
+		    <span class="pointer">
+		      <span class="pointer-cap"></span>
+		      <span class="value">0</span>
+		    </span>
+		</div>
+	</div>
+
 </div>	
 
 
 
   
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="http://builds.emberjs.com/handlebars-1.0.0.js"></script>
-<script src="http://builds.emberjs.com/tags/v1.0.0/ember.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
