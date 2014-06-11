@@ -37,7 +37,9 @@ App.MyGaugeComponent = Em.Component.extend({
 
 
 $(document).ready(function() {
-
+  computedAngle(0);
+  var maxVal = $(document).height() - $(window).height();
+  $('.max').html(maxVal);    
   $(window).scroll(function () {
       var scrollTop = parseInt($(window).scrollTop());
       console.log(scrollTop);
@@ -47,7 +49,7 @@ $(document).ready(function() {
     });
 
   function computedAngle(value) {
-      var maxVal = 500;
+      var maxVal = $(document).height() - $(window).height();
       var percentValue = Math.floor( value/maxVal * 100 );
       var angle = Math.floor(180 * percentValue/100 - 90);
       if( value > maxVal ) { angle = 90; } 
@@ -56,7 +58,10 @@ $(document).ready(function() {
       $('.pointer').css("-2moz-transform", "rotate("+angle+"deg)");
       $('.pointer').css("-ms-transform", "rotate("+angle+"deg)");  
       $('.pointer').css("-ms-transform", "rotate("+angle+"deg)");  
-      $('.pointer .value').html(value);           
+      var round = value.toString();
+      round = round.slice(0, -1);
+      $('.pointer .value').html(round);    
+
   }
 
 

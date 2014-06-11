@@ -13,14 +13,14 @@ body { height: 2500px; }
 }
 div#ember190 {
 	position: fixed;
-	top: 500px;
+	bottom: 100px;
 	left: 50px;
 }
 .gauge .pointer {
   width:4px; height:90%; margin-left:-2px;
   position:absolute; z-index:1; bottom:0; left:50%;
   background:white; border-radius:4px;
-  box-shadow:1px 1px 3px rgba(0,0,0,.3);
+  /* box-shadow:1px 1px 3px rgba(0,0,0,.3); */
   
   -webkit-transition: -webkit-transform .3s ease 0s;
      -moz-transition:    -moz-transform .3s ease 0s;
@@ -42,7 +42,7 @@ div#ember190 {
   margin-bottom:-8px; margin-left:-8px;
   position:absolute; bottom:0; left:50%;
   background:white; border-radius:100%;
-  box-shadow:1px 1px 5px rgba(0,0,0,.3);
+  /* box-shadow:1px 1px 5px rgba(0,0,0,.3); */
 }
 .gauge .pointer .value {
   width:60px; margin-left:-30px;
