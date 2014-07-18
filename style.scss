@@ -62,8 +62,10 @@ label { display:block; }
   .min { float:left; }
 }
 
-.exceeded { background:red; }
-.exceeded .value { color:red; }
+.exceeded { 
+  background:red; 
+  .value { color:red; }
+}
 
 .value-exceeded { 
   width:100%; 

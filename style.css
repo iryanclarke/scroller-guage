@@ -83,9 +83,8 @@ label {
 
 .exceeded {
   background: red; }
-
-.exceeded .value {
-  color: red; }
+  .exceeded .value {
+    color: red; }
 
 .value-exceeded {
   width: 100%;
