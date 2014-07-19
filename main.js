@@ -1,7 +1,12 @@
 $(document).ready(function() {
-  computedAngle(0);
   var maxVal = $(document).height() - $(window).height();
   $('.max').html(maxVal); 
+
+  var ticks = 12;
+  var currentTick = 1;
+
+  computedAngle(0);
+  console.log("Ticks: " + ticks);
 
   // Scroll handler   
   $(window).scroll(function () {
@@ -17,12 +22,32 @@ $(document).ready(function() {
 
       // Get window height
       var maxVal = $(document).height() - $(window).height();
+      console.log("Max Value: " + maxVal);
 
       // Convert current position to percentage down the page
       var percentValue = Math.floor( value/maxVal * 100 );
+      console.log("Percent Value: " + percentValue);
 
-      // Compute angle (out of 180 or 360)
-      var angle = Math.floor(180 * percentValue/100 - 90);
+
+
+      if (ticks != 0) {
+          var newAngle = 180 / ticks;
+          var breakpointVal = Math.floor( maxVal / ticks); 
+      }
+
+      var angle = (newAngle * (currentTick - 1)) - 90;
+      if(value >= (newAngle * currentTick))
+      {
+          // Compute angle (out of 180 or 360)
+          angle = Math.floor(180 * percentValue/100 - 90);
+
+          console.log("Triggeredmore");
+          angle = newAngle * (currentTick + 1);
+          angle = angle - 90;
+          currentTick++;
+      }
+
+      console.log("New Angle: " + newAngle + ". Breakpoint Value: " + breakpointVal + ". Angle Point 2: " + angle + ". Current Tick:" + currentTick);
 
       // If your value is greater than page length (For OSX 'bounce')
       if( value > maxVal ) { angle = 90; } 
