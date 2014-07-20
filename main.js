@@ -6,14 +6,12 @@ $(document).ready(function() {
   var currentTick = 1;
 
   computedAngle(0);
-  console.log("Ticks: " + ticks);
 
   // Scroll handler   
   $(window).scroll(function () {
       var scrollTop = parseInt($(window).scrollTop());
       console.log(scrollTop);
       value = scrollTop;
-      $('#ember213').attr("value", scrollTop);
       computedAngle(value);
     });
 
@@ -26,32 +24,35 @@ $(document).ready(function() {
       // Convert current position to percentage down the page
       var percentValue = Math.floor( value/maxVal * 100 );
 
+      // Test to see if user has enabled ticks
       if (ticks != 0) {
           var newAngle = 180 / ticks;
           var breakpointVal = Math.floor( maxVal / ticks); 
+          var angle = (newAngle * (currentTick - 1)) - 90;
+
+          // Checks to see if current scroll point is greater than a multiple of the current tick value
+           if(value >= (breakpointVal * currentTick))
+          {
+              // Compute angle (out of 180 or 360)
+              angle = Math.floor(180 * percentValue/100 - 90);
+              currentTick++;
+              angle = (newAngle * (currentTick)) - 90;
+          }
+          // Checks to see if current scroll point is less than a multiple of the current tick value
+          if(value <= (breakpointVal * currentTick))
+          {
+              // Compute angle (out of 180 or 360)
+              angle = Math.floor(180 * percentValue/100 - 90);
+              currentTick--;
+              angle = (newAngle * (currentTick)) - 90;
+          }
+      }
+      else {
+          var angle = Math.floor(180 * percentValue/100 - 90);
       }
 
-      var angle = (newAngle * (currentTick - 1)) - 90;
 
-      if(value >= (breakpointVal * currentTick))
-      {
-          // Compute angle (out of 180 or 360)
-          angle = Math.floor(180 * percentValue/100 - 90);
-
-          console.log("Triggeredmore");
-          currentTick++;
-          angle = (newAngle * (currentTick)) - 90;
-      }
-
-      if(value <= (breakpointVal * currentTick))
-      {
-          // Compute angle (out of 180 or 360)
-          angle = Math.floor(180 * percentValue/100 - 90);
-
-          console.log("Triggeredless");
-          currentTick--;
-          angle = (newAngle * (currentTick)) - 90;
-      }
+     
 
       console.log("New Angle: " + newAngle + ". Breakpoint Value: " + breakpointVal + ". Angle Point 2: " + angle + ". Current Tick:" + currentTick);
 
