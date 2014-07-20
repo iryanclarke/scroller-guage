@@ -22,13 +22,9 @@ $(document).ready(function() {
 
       // Get window height
       var maxVal = $(document).height() - $(window).height();
-      console.log("Max Value: " + maxVal);
 
       // Convert current position to percentage down the page
       var percentValue = Math.floor( value/maxVal * 100 );
-      console.log("Percent Value: " + percentValue);
-
-
 
       if (ticks != 0) {
           var newAngle = 180 / ticks;
@@ -36,15 +32,25 @@ $(document).ready(function() {
       }
 
       var angle = (newAngle * (currentTick - 1)) - 90;
-      if(value >= (newAngle * currentTick))
+
+      if(value >= (breakpointVal * currentTick))
       {
           // Compute angle (out of 180 or 360)
           angle = Math.floor(180 * percentValue/100 - 90);
 
           console.log("Triggeredmore");
-          angle = newAngle * (currentTick + 1);
-          angle = angle - 90;
           currentTick++;
+          angle = (newAngle * (currentTick)) - 90;
+      }
+
+      if(value <= (breakpointVal * currentTick))
+      {
+          // Compute angle (out of 180 or 360)
+          angle = Math.floor(180 * percentValue/100 - 90);
+
+          console.log("Triggeredless");
+          currentTick--;
+          angle = (newAngle * (currentTick)) - 90;
       }
 
       console.log("New Angle: " + newAngle + ". Breakpoint Value: " + breakpointVal + ". Angle Point 2: " + angle + ". Current Tick:" + currentTick);
@@ -63,7 +69,7 @@ $(document).ready(function() {
 
       // Rounding
       var round = value.toString();
-      round = round.slice(0, -1);
+      round = round.slice(0, -2);
       $('.pointer .value').html(round);    
 
   }
