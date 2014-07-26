@@ -51,9 +51,6 @@ $(document).ready(function() {
           var angle = Math.floor(180 * percentValue/100 - 90);
       }
 
-
-     
-
       console.log("New Angle: " + newAngle + ". Breakpoint Value: " + breakpointVal + ". Angle Point 2: " + angle + ". Current Tick:" + currentTick);
 
       // If your value is greater than page length (For OSX 'bounce')
@@ -65,7 +62,6 @@ $(document).ready(function() {
       // Rotating the needle
       $('.pointer').css("-webkit-transform", "rotate("+angle+"deg)");  
       $('.pointer').css("-2moz-transform", "rotate("+angle+"deg)");
-      $('.pointer').css("-ms-transform", "rotate("+angle+"deg)");  
       $('.pointer').css("-ms-transform", "rotate("+angle+"deg)");  
 
       // Rounding
