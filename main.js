@@ -25,7 +25,7 @@ $(document).ready(function() {
       var percentValue = Math.floor( value/maxVal * 100 );
 
       // Test to see if user has enabled ticks
-      if (ticks != 0) {
+      if (ticks != 0 && typeof ticks === 'number') {
           var newAngle = 180 / ticks;
           var breakpointVal = Math.floor( maxVal / ticks); 
           var angle = (newAngle * (currentTick - 1)) - 90;
