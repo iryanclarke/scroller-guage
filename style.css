@@ -15,9 +15,9 @@ label {
 
 .container {
   position: relative;
-  width: 100px;
-  height: 50px;
-  border-radius: 50px 50px 0 0;
+  width: 50px;
+  height: 100px;
+  border-radius: 0 50px 50px 0;
   background: #41b7d8;
   -webkit-transition: background .3s;
   -moz-transition: background .3s;
@@ -32,8 +32,9 @@ label {
 
 .pointer {
   width: 4px;
-  height: 90%;
-  margin-left: -2px;
+  height: 45%;
+  margin-left: -27px;
+  margin-bottom: 49px;
   position: absolute;
   z-index: 1;
   bottom: 0;
@@ -45,10 +46,10 @@ label {
   -moz-transition: -moz-transform .3s ease 0s;
   -ms-transition: -ms-transform .3s ease 0s;
   transition: transform .3s ease 0s;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
   -webkit-transform-origin: bottom;
   -moz-transform-origin: bottom;
   -ms-transform-origin: bottom;
@@ -105,4 +106,10 @@ label {
     border-radius: 0;
     bottom: 0px;
     left: 0px;
-    position: fixed; } }
+    position: fixed; }
+
+  .pointer {
+    margin-bottom: 9px;
+    height: 0px; } }
+
+/*# sourceMappingURL=style.css.map */

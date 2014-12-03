@@ -2,7 +2,7 @@ $(document).ready(function() {
   var maxVal = $(document).height() - $(window).height();
   $('.max').html(maxVal); 
 
-  var ticks = 12;
+  var ticks = 5;
   var currentTick = 1;
 
   computedAngle(0);
@@ -28,36 +28,36 @@ $(document).ready(function() {
       if (ticks != 0 && typeof ticks === 'number') {
           var newAngle = 180 / ticks;
           var breakpointVal = Math.floor( maxVal / ticks); 
-          var angle = (newAngle * (currentTick - 1)) - 90;
+          var angle = (newAngle * (currentTick - 1)) - 0;
 
           // Checks to see if current scroll point is greater than a multiple of the current tick value
            if(value >= (breakpointVal * currentTick))
           {
               // Compute angle (out of 180 or 360)
-              angle = Math.floor(180 * percentValue/100 - 90);
+              angle = Math.floor(180 * percentValue/100 - 0);
               currentTick++;
-              angle = (newAngle * (currentTick)) - 90;
+              angle = (newAngle * (currentTick)) - 0;
           }
           // Checks to see if current scroll point is less than a multiple of the current tick value
           if(value <= (breakpointVal * currentTick))
           {
               // Compute angle (out of 180 or 360)
-              angle = Math.floor(180 * percentValue/100 - 90);
+              angle = Math.floor(180 * percentValue/100 - 0);
               currentTick--;
-              angle = (newAngle * (currentTick)) - 90;
+              angle = (newAngle * (currentTick)) - 0;
           }
       }
       else {
-          var angle = Math.floor(180 * percentValue/100 - 90);
+          var angle = Math.floor(180 * percentValue/100 - 0);
       }
 
       console.log("New Angle: " + newAngle + ". Breakpoint Value: " + breakpointVal + ". Angle Point 2: " + angle + ". Current Tick:" + currentTick);
 
       // If your value is greater than page length (For OSX 'bounce')
-      if( value > maxVal ) { angle = 90; } 
+      if( value > maxVal ) { angle = 180; } 
 
       // If your value is negative (of or page, for OSX 'bounce')
-      if ( value <= 0 ) { angle = -90; }
+      if ( value <= 0 ) { angle = 0; }
 
       // Rotating the needle
       $('.pointer').css("-webkit-transform", "rotate("+angle+"deg)");  
